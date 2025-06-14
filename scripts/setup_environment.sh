@@ -13,8 +13,16 @@ cp .env.example .env
 # Step 3: Setup SQLite
 mkdir -p database
 touch database/database.sqlite
-sed -i '' "s/DB_CONNECTION=mysql/DB_CONNECTION=sqlite/" .env
-sed -i '' "s/DB_DATABASE=.*/DB_DATABASE=$(pwd | sed 's/\//\\\//g')\/database\/database.sqlite/" .env
+
+# Use the correct sed syntax for macOS or Linux
+DB_PATH="$(pwd)/database/database.sqlite"
+if [[ "$(uname)" == "Darwin" ]]; then
+  sed -i '' "s/DB_CONNECTION=.*/DB_CONNECTION=sqlite/" .env
+  sed -i '' "s|DB_DATABASE=.*|DB_DATABASE=${DB_PATH}|" .env
+else
+  sed -i "s/DB_CONNECTION=.*/DB_CONNECTION=sqlite/" .env
+  sed -i "s|DB_DATABASE=.*|DB_DATABASE=${DB_PATH}|" .env
+fi
 
 # Step 4: Generate key
 php artisan key:generate
