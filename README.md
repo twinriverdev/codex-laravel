@@ -92,6 +92,19 @@ Automates Laravel install, environment config, database setup, key generation, a
 
 ---
 
+## 🧪 Tests
+
+Run the automated tests with [Bats](https://github.com/bats-core/bats-core):
+
+```bash
+bats tests
+```
+
+These tests stub external commands so they can run without network access and
+verify that `scripts/setup_environment.sh` configures SQLite correctly.
+
+---
+
 ## 👨‍🏫 Contributing
 
 Pull requests are welcome. For major changes, please open an issue first.
