@@ -26,23 +26,30 @@ Make sure you have the following installed:
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start (Step-by-Step)
 
-Clone the repository:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/codex-laravel-dev-setup.git
+   cd codex-laravel-dev-setup
+   ```
 
-```bash
-git clone https://github.com/yourusername/codex-laravel-dev-setup.git
-cd codex-laravel-dev-setup
-```
+2. **Run the bootstrap script** – this installs Laravel, sets up a SQLite
+   database and prepares the `.env` file.
+   ```bash
+   chmod +x bootstrap.sh
+   ./bootstrap.sh
+   ```
 
-Run the bootstrap script:
+3. **Serve the application**
+   The setup script leaves you inside the new `codex-laravel` directory.
+   ```bash
+   php artisan serve
+   ```
+   Open `http://localhost:8000` in your browser.
 
-```bash
-chmod +x bootstrap.sh
-./bootstrap.sh
-```
-
-That’s it! Your Codex Laravel dev environment is ready.
+4. **Start coding!** All project files live inside the `codex-laravel`
+   directory.
 
 ---
 
@@ -76,6 +83,12 @@ A master script that runs `setup_environment.sh` inside `/scripts` and finalizes
 ### `scripts/setup_environment.sh`
 
 Automates Laravel install, environment config, database setup, key generation, and migration.
+
+### Next Steps for Beginners
+
+- Open the new `codex-laravel/.env` file to tweak configuration values.
+- Run additional migrations with `php artisan migrate` as you build out features.
+- Install packages using `composer require vendor/package`.
 
 ---
 
